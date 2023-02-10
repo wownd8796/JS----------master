@@ -4,6 +4,24 @@
   font-weight: normal;
   font-style: normal;
 }
+:root {
+  --color-text: navy;
+  --color-bg: papayawhip;
+  --color-bg-accent: #ecdcc0;
+  --size: clamp(10rem, 1rem + 40vmin, 30rem);
+  --gap: calc(var(--size) / 14);
+  --duration: 60s;
+  --scroll-start: 0;
+  --scroll-end: calc(-100% - var(--gap));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: papayawhip;
+    --color-bg: navy;
+    --color-bg-accent: #2626a0;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -53,4 +71,34 @@ h1 {
   width: 50px;
   margin: 0 auto;
   margin-top: 20px;
+}
+
+.group {
+  position: relative;
+  z-index: 100;
+  top: 800px;
+  display: flex;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  gap: var(--gap);
+  -webkit-mask-image: linear-gradient(var(--mask-direction, to right), hsla(0deg, 0%, 0%, 0), hsl(0deg, 0%, 0%) 20%, hsl(0deg, 0%, 0%) 80%, hsla(0deg, 0%, 0%, 0));
+          mask-image: linear-gradient(var(--mask-direction, to right), hsla(0deg, 0%, 0%, 0), hsl(0deg, 0%, 0%) 20%, hsl(0deg, 0%, 0%) 80%, hsla(0deg, 0%, 0%, 0));
+}
+.group .celebrity {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  -webkit-animation: scroll-x var(--duration) linear infinite;
+          animation: scroll-x var(--duration) linear infinite;
+}
+.group .celebrity img {
+  width: 100px;
+  height: 125px;
+  text-align: center;
 }/*# sourceMappingURL=main.css.map */
